@@ -5,7 +5,10 @@ include_once("../modelos/intranetClass.php");
 class conjuntoLibros extends connect{
 	private $db;
 	public function __construct() {
-		session_start();
+		//session_start();
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
 		$conexion = new connect();
 		$this->db = $conexion->conexion();
 	}
